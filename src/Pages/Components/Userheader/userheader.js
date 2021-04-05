@@ -8,14 +8,23 @@ import React, {useLayoutEffect,useState} from 'react';
 import { useHistory } from "react-router-dom";
 
 /* ######################   Styling   ########################### */ 
-import './homeheader.css';
+import './userheader.css';
 
 
 
 
-function Homeheader() {
+function Userheader() {
     
+        
+     let history = useHistory();
+    
+    function reset(){
+        console.log("hi");
+        localStorage.setItem('token',"");
+        history.push('/home');
+    }
 
+    
   return (
       <div>
       
@@ -38,15 +47,14 @@ function Homeheader() {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       
           <ul className="navbar-nav">
-              <Link to ="/" className="ml nav-link" >Home</Link>
-              <Link to ="#" className="ml-sm-5 nav-link" >Features</Link>
-              <a className="ml-sm-5 nav-link" href="#">Pricing</a>
+              <Link to ="/userhome" className="ml nav-link" >Home</Link>
+
+             
           </ul>
       
           <ul className="navbar-nav ml-auto">        
-              <Link to ="/signup" className="pr-lg-3 nav-link" >Sign up</Link>  
-              <Link to ="/login" className="pr-lg-3 nav-link" >Login</Link>    
-         
+            
+               <button className="pr-lg-3 nav-link" onClick={reset}>Logout</button>  
           </ul>
       
       </div>
@@ -60,6 +68,6 @@ function Homeheader() {
   );
 }
 
-export default Homeheader;
+export default Userheader;
 
 
